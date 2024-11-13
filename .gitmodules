@@ -1,0 +1,3 @@
+[submodule "Dependencies/rubberband"]
+	path = Dependencies/rubberband
+	url = https://github.com/mikeoliphant/rubberband
