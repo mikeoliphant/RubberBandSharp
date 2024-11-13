@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubberBandSharp", "RubberBandSharp\RubberBandSharp.csproj", "{48505262-3799-4975-BAF4-555A97A6B20D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{48505262-3799-4975-BAF4-555A97A6B20D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48505262-3799-4975-BAF4-555A97A6B20D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48505262-3799-4975-BAF4-555A97A6B20D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48505262-3799-4975-BAF4-555A97A6B20D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7A2AF226-0D25-4448-AE6B-F711FBC0547C}
+	EndGlobalSection
+EndGlobal
