@@ -137,4 +137,46 @@ namespace RubberBandSharp
             return samplesRead;
         }
     }
+
+    public class RubberBandStretcherMono : RubberBandStretcher
+    {
+        public RubberBandStretcherMono(int sampleRate, Options options = Options.None, double initialTimeRatio = 1.0, double initialPitchScale = 1.0)
+            : base(sampleRate, 1, options, initialTimeRatio, initialPitchScale)
+        {
+        }
+
+        public unsafe void Process(ReadOnlySpan<float> audio, uint numSamples, bool isFinal)
+        {
+            Span<IntPtr> ptrs = stackalloc IntPtr[1];
+
+            fixed (IntPtr* ptr = ptrs)
+            {
+                fixed (float* audioPtr = audio)
+                {
+                    ptrs[0] = (IntPtr)audioPtr;
+
+                    Process((IntPtr)ptr, numSamples, isFinal);
+                }
+            }
+        }
+
+        public unsafe uint Retrieve(Span<float> audio, uint numSamples)
+        {
+            Span<IntPtr> ptrs = stackalloc IntPtr[1];
+
+            uint samplesRead = 0;
+
+            fixed (IntPtr* ptr = ptrs)
+            {
+                fixed (float* audioPtr = audio)
+                {
+                    ptrs[0] = (IntPtr)audioPtr;
+
+                    samplesRead = Retrieve((IntPtr)ptr, numSamples);
+                }
+            }
+
+            return samplesRead;
+        }
+    }
 }
