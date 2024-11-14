@@ -6,6 +6,10 @@ Currently I only wrap the functionality I need. If you need other functionality,
 
 # Usage
 
+RubberBandSharp is available on NuGet here:
+
+https://www.nuget.org/packages/RubberBandSharp
+
 The **RubberBandStretcherStereo** and **RubberBandStretcherMono** class are provided for simple stereo and mono use cases.
 
 The more general **RubberBandStretcher** base class supports any number of channels, but you are currently responsible for mapping input audio buffers into an IntPtr which is a "float**" to your audio buffers.
