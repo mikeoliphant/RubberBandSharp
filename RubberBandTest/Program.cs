@@ -14,7 +14,6 @@ namespace RubberBandTest
                     RubberBandStretcher.Options.FormantPreserved |
                     RubberBandStretcher.Options.PitchHighConsistency);
 
-
             stretcher.SetTimeRatio(2);
 
             uint bufferSize = 128;
