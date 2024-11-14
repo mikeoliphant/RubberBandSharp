@@ -5,7 +5,7 @@ namespace RubberBandSharp
 {
     internal static class NativeAPI
     {
-        public const string RUBBERBAND_LIB_NAME = "rubberband-library";
+        public const string RUBBERBAND_LIB_NAME = "librubberband";
 
         [DllImport(RUBBERBAND_LIB_NAME)]
         public static extern IntPtr rubberband_new(IntPtr sampleRate, uint channels, int options = 0, double initialTimeRatio = 1.0, double initialPitchScale = 1.0);
