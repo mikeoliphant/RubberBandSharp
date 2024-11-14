@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<Version>0.0.5</Version>
+		<Version>0.0.6</Version>
 		<TargetFramework>net8.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
@@ -10,6 +10,7 @@
 		<PackageLicenseExpression>GPL-2.0-or-later</PackageLicenseExpression>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -19,5 +20,7 @@
 			<PackagePath>runtimes/win-x64/native</PackagePath>
 			<Pack>true</Pack>
 		</None>
+
+		<None Include="..\README.md" Pack="true" PackagePath="\"/>
 	</ItemGroup>
 </Project>
