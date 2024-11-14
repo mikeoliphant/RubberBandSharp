@@ -12,4 +12,10 @@
     <ProjectReference Include="..\RubberBandSharp\RubberBandSharp.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="librubberband.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

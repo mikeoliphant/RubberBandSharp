@@ -8,7 +8,14 @@ namespace RubberBandTest
         {
             int sampleRate = 48000;
 
-            var stretcher = new RubberBandStretcherStereo(sampleRate);
+            var stretcher = new RubberBandStretcherStereo(sampleRate,
+                    RubberBandStretcher.Options.ProcessRealTime |
+                    RubberBandStretcher.Options.WindowShort |
+                    RubberBandStretcher.Options.FormantPreserved |
+                    RubberBandStretcher.Options.PitchHighConsistency);
+
+
+            stretcher.SetTimeRatio(2);
 
             uint bufferSize = 128;
 
@@ -27,7 +34,11 @@ namespace RubberBandTest
 
             uint inputOffset = 0;
 
-            while (inputOffset < audioSize)
+            uint outputSamplesProcessed = 0;
+
+            bool finished = false;
+
+            while (!finished)
             {
                 uint samplesNeeded = bufferSize;
                 uint outputOffset = 0;
@@ -45,28 +56,41 @@ namespace RubberBandTest
                         if (read != toRead)
                             throw new Exception();
 
-                        samplesNeeded -= toRead;
-                        outputOffset += toRead;
+                        samplesNeeded -= read;
+                        outputOffset += read;
 
-                        //continue;
+                        outputSamplesProcessed += read;
                     }
                     else
                     {
-                        uint stretchSamplesRequired = stretcher.GetSamplesRequired();
-
-                        if ((inputOffset + stretchSamplesRequired) > audioSize)
+                        if (inputOffset >= audioSize)
                         {
-                            inputOffset = audioSize;
+                            finished = true;
 
                             break;
                         }
 
-                        stretcher.Process(leftAudio.Slice((int)inputOffset, (int)stretchSamplesRequired), rightAudio.Slice((int)inputOffset, (int)stretchSamplesRequired), stretchSamplesRequired, isFinal: false);
+                        uint stretchSamplesRequired = stretcher.GetSamplesRequired();
+
+                        bool isFinal = false;
+
+                        if ((inputOffset + stretchSamplesRequired) >= audioSize)
+                        {
+                            stretchSamplesRequired = audioSize - inputOffset;
+
+                            isFinal = true;
+                        }
+
+                        stretcher.Process(leftAudio.Slice((int)inputOffset, (int)stretchSamplesRequired), rightAudio.Slice((int)inputOffset, (int)stretchSamplesRequired), stretchSamplesRequired, isFinal);
 
                         inputOffset += stretchSamplesRequired;
                     }
                 }
             }
+
+            float outputRatio = (float)outputSamplesProcessed / (float)audioSize;
+
+            Console.WriteLine("Output size ratio was: " + outputRatio);
         }
     }
 }
