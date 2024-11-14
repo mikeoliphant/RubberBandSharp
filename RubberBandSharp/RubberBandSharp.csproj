@@ -7,7 +7,7 @@
 		<Nullable>enable</Nullable>
 		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
 		<Description>.NET Wrapper for Rubber Band audio time-stretching and pitch-shifting library</Description>
-		<PackageLicenseExpression>GPL-2.0</PackageLicenseExpression>
+		<PackageLicenseExpression>GPL-2.0-or-later</PackageLicenseExpression>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 	</PropertyGroup>
